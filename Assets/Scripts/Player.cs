@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
+        textoVida.text = "Vida: " + vidaActual.ToString();
+        textoDinero.text = "Dinero: " + tickets.ToString();
 
         /*for (int i = 0; i<vidaMaxima; i++) {
             GameObject newCorazon = Instantiate(prefabCorazon, corazones.transform);
@@ -28,14 +30,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoVida.text = "Vida: " + vidaActual.ToString();
-        textoDinero.text = "Dinero: " + tickets.ToString();
+        
     }
 
     public void RecibirDanio(float cantidad)
     {
         vidaActual -= cantidad;
-        Debug.Log(vidaActual);
+        textoVida.text = "Vida: " + vidaActual.ToString();
 
         if (vidaActual <= 0)
         {
@@ -44,9 +45,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void CurarDanio(float cantidad)
+    {
+        if (vidaActual < vidaMaxima)
+        {
+            vidaActual += cantidad;
+            textoVida.text = "Vida: " + vidaActual.ToString();
+        }
+    }
+
     public void RecibirDinero(float cantidad)
     {
         tickets += cantidad;
+        textoDinero.text = "Dinero: " + tickets.ToString();
 
         if (vidaActual <= 0)
         {
