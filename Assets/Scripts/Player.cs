@@ -6,11 +6,13 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     [SerializeField] float vidaMaxima = 10;
+    [SerializeField] float tickets = 0;
     float vidaActual;
     [SerializeField] TextMeshProUGUI textoVida;
-    [SerializeField] GameObject corazones;
-    [SerializeField] Sprite corazoEntero;
-    [SerializeField] GameObject prefabCorazon;
+    [SerializeField] TextMeshProUGUI textoDinero;
+    //[SerializeField] GameObject corazones;
+    //[SerializeField] Sprite corazoEntero;
+    //[SerializeField] GameObject prefabCorazon;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoVida.text = "Vida: " + vidaActual.ToString();   
+        textoVida.text = "Vida: " + vidaActual.ToString();
+        textoDinero.text = "Dinero: " + tickets.ToString();
     }
 
     public void RecibirDanio(float cantidad)
@@ -41,16 +44,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void RecibirDinero(float cantidad)
+    {
+        tickets += cantidad;
+
+        if (vidaActual <= 0)
+        {
+            textoVida.text = "Vida: " + vidaActual.ToString();
+            Morir();
+        }
+    }
+
     void Morir()
     {
         Destroy(gameObject);
     }
 
-    void SpawnSprite()
+    /*void SpawnSprite()
     {
         GameObject obj = new GameObject("SpriteRenderer");
         SpriteRenderer sr = obj.AddComponent<SpriteRenderer>();
         sr.sprite = corazoEntero;
         obj.transform.parent = corazones.transform;
-    }
+    }*/
 }
