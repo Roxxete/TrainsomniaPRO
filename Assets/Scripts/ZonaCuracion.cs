@@ -13,7 +13,7 @@ public class ZonaCuracion : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (tiempo >= 0.5f)
+            if (tiempo >= 0.4f)
             {
                 tiempo = 0;
                 other.GetComponent<Player>().CurarDanio(cantidadCuracion);
@@ -23,7 +23,7 @@ public class ZonaCuracion : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (tiempo < 0.5f)
+        if (tiempo < 0.4f)
         {
             tiempo += Time.fixedDeltaTime;
         }
