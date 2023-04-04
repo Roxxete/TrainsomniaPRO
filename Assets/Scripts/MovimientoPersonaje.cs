@@ -10,6 +10,7 @@ public class MovimientoPersonaje : MonoBehaviour
     [SerializeField] float gravedad = 20.0f;
     [SerializeField] float distanciaDash = 20.0f;
     [SerializeField] float tiempoDash = 20.0f;
+    [SerializeField] float danyo;
 
     CharacterController characterController;
     [SerializeField] TextMeshProUGUI textoDash;
@@ -83,6 +84,17 @@ public class MovimientoPersonaje : MonoBehaviour
                 characterController.Move(dash * Time.deltaTime);
             }
             tiempoActual = 0;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (Input.GetMouseButtonDown(1)) 
+        {
+            if (other.CompareTag("enemigo"))
+            {
+                other.GetComponent<MinionTerrestre1>().RecibirDanio(danyo);
+            }
         }
     }
 }
