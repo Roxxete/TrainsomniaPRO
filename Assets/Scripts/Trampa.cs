@@ -5,13 +5,21 @@ using UnityEngine;
 public class Trampa : MonoBehaviour
 {
     [SerializeField] float cantidadDanio = 0.25f;
+    float tiempo = 0;
 
-    // Start is called before the first frame update
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && tiempo >= 1f)
         {
+            tiempo = 0;
             other.GetComponent<Player>().RecibirDanio(cantidadDanio);
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (tiempo < 1f)
+        {
+            tiempo += Time.fixedDeltaTime;
         }
     }
 }
