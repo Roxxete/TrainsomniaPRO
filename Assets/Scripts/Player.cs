@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     float vidaActual;
     [SerializeField] TextMeshProUGUI textoVida;
     [SerializeField] TextMeshProUGUI textoDinero;
+    [SerializeField] GameObject spawnPoint;
+
     //[SerializeField] GameObject corazones;
     //[SerializeField] Sprite corazoEntero;
     //[SerializeField] GameObject prefabCorazon;
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void RecibirDanio(float cantidad)
@@ -68,7 +70,17 @@ public class Player : MonoBehaviour
 
     void Morir()
     {
-        Destroy(gameObject);
+        Debug.Log("ha muerto");
+
+        Vector3 spawnPos = spawnPoint.transform.position;
+        GetComponent<CharacterController>().enabled = false; // Deshabilitar temporalmente el controlador
+        transform.position = spawnPos; // Teleportar al jugador
+        GetComponent<CharacterController>().enabled = true; // Volver a habilitar el controlador        
+        //Destroy(gameObject);
+        //gameObject.transform.position = spawnPoint.position;
+        vidaActual = vidaMaxima;
+        textoVida.text = "Vida: " + vidaActual.ToString();
+
     }
 
     /*void SpawnSprite()
