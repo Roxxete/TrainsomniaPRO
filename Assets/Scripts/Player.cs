@@ -80,7 +80,6 @@ public class Player : MonoBehaviour
         //gameObject.transform.position = spawnPoint.position;
         vidaActual = vidaMaxima;
         textoVida.text = "Vida: " + vidaActual.ToString();
-
     }
 
     /*void SpawnSprite()
