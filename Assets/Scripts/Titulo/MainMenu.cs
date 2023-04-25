@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] Canvas OpcionesCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +26,10 @@ public class MainMenu : MonoBehaviour
     public void Cerrar()
     {
         Application.Quit();
+    }
+
+    public void Opciones()
+    {
+        
     }
 }
