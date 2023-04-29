@@ -17,29 +17,46 @@ public class LogicaNpc : MonoBehaviour
     public GameObject objetivos;
     public int numeroObjetivos;
     public GameObject botonMision;
-
+    public Transform bob;
+    public Transform mercader;
+    public GameObject player;
+    private bool seMostroPanel2 = false;
 
     // Start is called before the first frame update
     void Start()
     {
 
+        player = GameObject.FindGameObjectWithTag("Player");
 
         panelNPC.SetActive(false);
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
+        float distance = Vector3.Distance(bob.position, mercader.position);
 
-        if (Input.GetKeyDown(KeyCode.E) && aceptarMision == false)
+        if (distance <= 3 && seMostroPanel2 == false)
         {
+            panelNPC.SetActive(true);
 
+            if (Input.GetKeyDown(KeyCode.E) && aceptarMision == false && seMostroPanel2 == false)
+            {
+                seMostroPanel2 = true;
+                panelNPC.SetActive(false);
+                panelNPC2.SetActive(true);
+            }
+        }
+        else
+        {
             panelNPC.SetActive(false);
-            panelNPC2.SetActive(true);
         }
     }
 
-    private void onTriggerEnter(Collider other)
+
+    /*private void onTriggerEnter(Collider other)
     {
 
         if (other.tag == "Player")
@@ -65,15 +82,17 @@ public class LogicaNpc : MonoBehaviour
             panelNPC2.SetActive(false);
 
         }
-    }
+    }*/
 
     public void NO()
     {
         panelNPC.SetActive(true);
         panelNPC2.SetActive(false);
+        seMostroPanel2 = false;
     }
 
-    public void SI(){
+    public void SI()
+    {
         panelNPC.SetActive(false);
         panelNPC2.SetActive(false);
         panelNPCMision.SetActive(true);
