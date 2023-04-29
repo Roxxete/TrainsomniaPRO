@@ -21995,6 +21995,13 @@ MonoBehaviour:
   objetivos: {fileID: 0}
   numeroObjetivos: 0
   botonMision: {fileID: 0}
+  bob: {fileID: 1577240203}
+  mercader: {fileID: 1296834939}
+--- !u!4 &1296834939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 442147566982937933, guid: 3f11020ebb948fc42bb93eba522311e7, type: 3}
+  m_PrefabInstance: {fileID: 947216944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299744272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24829,7 +24836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1457664148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26496,9 +26503,10 @@ GameObject:
   - component: {fileID: 1577240205}
   - component: {fileID: 1577240204}
   - component: {fileID: 1577240206}
+  - component: {fileID: 1577240207}
   m_Layer: 0
   m_Name: Personaje
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26513,7 +26521,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 2
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -26636,6 +26644,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1577240207
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577240199}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.5
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1577952060
 PrefabInstance:
   m_ObjectHideFlags: 0
